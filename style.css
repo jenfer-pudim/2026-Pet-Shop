@@ -1,78 +1,282 @@
-/* ===== MENU / NAVBAR ===== */
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS (RESET)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+body {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO (HEADER)
+   ========================================================================== */
 header {
-    background: linear-gradient(135deg, #ff914d, #ff7722);
-    padding: 20px;
-    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between; /* Alinha a logo à esquerda e o menu à direita */
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
-/* Título */
-header h1 {
-    color: white;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+/* Espaço reservado para o Link da Logo (caso queira colocar uma imagem ou texto depois) */
+header > a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2a9d8f;
+    text-decoration: none;
 }
 
-/* Barra do menu */
-nav {
-    background-color: white;
-    max-width: 650px;
-    margin: auto;
-    padding: 12px 20px;
-    border-radius: 50px;
+/* Caso queira colocar um texto dinâmico na logo pelo CSS enquanto não tem imagem */
+header > a::after {
+    content: "🐾 PetShop";
+}
 
+/* ==========================================================================
+   3. MENU DE NAVEGAÇÃO (NAV)
+   ========================================================================== */
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* Espaçamento entre os itens do menu */
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+/* Efeito de passar o mouse (Hover) */
+.nav-list li a:hover {
+    color: #2a9d8f;
+}
+
+/* Linha decorativa que aparece embaixo do link ao passar o mouse */
+.nav-list li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #e76f51; /* Cor laranja para dar destaque */
+    transition: width 0.3s ease;
+}
+
+.nav-list li a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   4. RESPONSIVIDADE (PARA CELULARES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .nav-list {
+        gap: 1.5rem;
+    }
+
+    .nav-list li a {
+        font-size: 1rem;
+    }
+}
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS (Adicione se ainda não tiver no topo do arquivo)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* ==========================================================================
+   SEÇÃO ORIENTAÇÕES (BANNER DE BOAS-VINDAS)
+   ========================================================================== */
+.Orientações {
+    /* Define uma altura mínima para o banner (60% da altura da tela) */
+    min-height: 60vh; 
+    
+    /* Cria um fundo com degradê suave usando as cores do Pet Shop */
+    background: linear-gradient(135deg, #eaf6f4 0%, #dbf0ec 100%);
+    
+    /* Centraliza todo o conteúdo (texto) na tela horizontal e verticalmente */
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    
+    /* Espaçamento interno de segurança */
+    padding: 2rem;
+    text-align: center;
+    
+    /* Opcional: Adiciona uma borda arredondada sutil na parte inferior */
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
-/* Links do menu */
-nav a {
-    text-decoration: none;
-    color: #ff914d;
-    font-size: 1rem;
-    font-weight: bold;
-
-    padding: 10px 20px;
-    border-radius: 30px;
-
-    transition: all 0.3s ease;
+/* Caixa que envolve o texto */
+.Orientações-text {
+    max-width: 600px; /* Evita que o texto fique largo demais em telas grandes */
+    padding: 1.5rem;
 }
 
-/* Hover */
-nav a:hover {
-    background-color: #ff914d;
-    color: white;
-    transform: translateY(-2px);
+/* Estilização do Título (H1) */
+.Orientações-text h1 {
+    font-size: 2.5rem;
+    color: #2a9d8f; /* Verde-água escuro para destaque */
+    margin-bottom: 1rem; /* Espaço entre o título e o parágrafo */
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
-/* Clique */
-nav a:active {
-    transform: scale(0.95);
+/* Estilização do Parágrafo (P) */
+.Orientações-text p {
+    font-size: 1.2rem;
+    color: #6c757d; /* Cinza confortável para leitura */
+    line-height: 1.6;
+    font-weight: 400;
 }
 
-/* Responsivo */
+/* ==========================================================================
+   RESPONSIVIDADE (PARA TELAS MENORES / CELULARES)
+   ========================================================================== */
 @media (max-width: 768px) {
-
-    nav {
-        flex-direction: column;
-        border-radius: 20px;
-        gap: 10px;
+    .Orientações {
+        min-height: 45vh; /* Diminui a altura em telas de celular */
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
 
-    nav a {
-        width: 100%;
-        text-align: center;
+    .Orientações-text h1 {
+        font-size: 2rem; /* Diminui o tamanho da fonte no celular */
     }
 
-    header h1 {
-        font-size: 2rem;
+    .Orientações-text p {
+        font-size: 1rem;
     }
+}
+/* ==========================================================================
+   SEÇÃO SERVIÇOS (Fundo limpo, apenas texto)
+   ========================================================================== */
+.Serviços {
+    padding: 4rem 5%;
+    background-color: #ffffff; /* Fundo branco liso */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha tudo estritamente na esquerda */
+}
+
+/* Título Principal da Seção ("Nossos Serviços") */
+.Serviços > h2:first-of-type {
+    font-size: 2.2rem;
+    color: #2a9d8f; /* Verde-água padrão */
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+}
+
+/* Linha decorativa embaixo do título principal */
+.Serviços > h2:first-of-type::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background-color: #100300; /* Laranja */
+    bottom: -10px;
+    left: 0;
+    border-radius: 2px;
+}
+
+/* Títulos dos Serviços (Banho e Tosa, Consulta, etc.) */
+.Serviços h1 {
+    font-size: 1.4rem;
+    color: #333d4d;
+    font-weight: 600;
+    margin-top: 1.5rem; /* Espaço em relação ao bloco de cima */
+    margin-bottom: 0.3rem; /* Espaço colado no "Olá" */
+    text-align: left;
+}
+
+/* Subtítulos/Textos dos Serviços (Os "Olá") */
+.Serviços h2:not(:first-of-type) {
+    font-size: 1.1rem;
+    color: #6c757d; /* Cinza suave */
+    font-weight: 400;
+    margin-bottom: 1.5rem; /* Espaço antes do próximo serviço começar */
+    text-align: left;
+    width: 100%;
+    padding-bottom: 0; /* Removido o espaçamento da linha */
+    border-bottom: none; /* REMOVIDO: Nenhuma linha ou retângulo aqui */
+}
+/* ==========================================================================
+   SEÇÃO CONTATO (Fundo limpo e alinhado à esquerda)
+   ========================================================================== */
+.Contato {
+    padding: 4rem 5%;
+    background-color: #ffffff; /* Fundo branco para manter o padrão limpo */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha o título e os parágrafos na esquerda */
+}
+
+/* Título Principal da Seção ("Contato") */
+.Contato > h2 {
+    font-size: 2.2rem;
+    color: #2a9d8f; /* Verde-água padrão do seu Pet Shop */
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+}
+
+/* Linha decorativa embaixo do título "Contato" */
+.Contato > h2::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 4px;
+    background-color: #e76f51; /* Laranja accent */
+    bottom: -10px;
+    left: 0; /* Alinhada perfeitamente à esquerda */
+    border-radius: 2px;
+}
+
+/* Estilização das informações de Contato (Telefone e Email) */
+.Contato p {
+    font-size: 1.2rem;
+    color: #4a5568; /* Cinza escuro confortável para leitura */
+    font-weight: 500;
+    margin-bottom: 1rem; /* Espaçamento entre as linhas de texto */
+    text-align: left;
+    line-height: 1.5;
+}
+
+/* Remove a margem do último parágrafo para fechar o layout perfeitamente */
+.Contato p:last-of-type {
+    margin-bottom: 0;
 }
